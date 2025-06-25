@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salaryman Roguelike</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Energy Bar -->
+        <div id="energy-bar">
+            <div class="energy-label">Energy:</div>
+            <div id="energy-segments"></div>
+        </div>
+
+        <!-- Money Display -->
+        <div id="money-display">
+            <div class="image-wrapper money-icon"></div>
+            <span id="money-amount">0</span>
+        </div>
+
+        <!-- Game Screens -->
+        <div id="newspaper-screen" class="game-screen">
+            <h1>Job Search</h1>
+            <div id="newspaper-container"></div>
+        </div>
+
+        <div id="work-screen" class="game-screen hidden">
+            <div id="work-header">
+                <h2 id="work-title">Working...</h2>
+                <div id="work-progress">Hour <span id="current-hour">1</span> of <span id="total-hours">2</span></div>
+            </div>
+            <div id="work-area"></div>
+        </div>
+
+        <div id="shop-screen" class="game-screen hidden">
+            <h1>Train Station</h1>
+            <div class="image-wrapper train-station-bg"></div>
+            <div id="shop-container">
+                <div id="general-store">
+                    <h3>General Store</h3>
+                    <div id="items-list"></div>
+                </div>
+                <div id="gene-booth">
+                    <h3>Gene Editing Booth</h3>
+                    <div id="genes-list"></div>
+                </div>
+            </div>
+            <button id="continue-home-btn">Go Home</button>
+        </div>
+
+        <div id="death-screen" class="game-screen hidden">
+            <h1>Exhausted!</h1>
+            <p>You ran out of energy and have been let go...</p>
+            <p>But your genetic improvements live on...</p>
+            <div class="image-wrapper character-tired"></div>
+            <button id="next-generation-btn">Next Generation</button>
+        </div>
+
+        <div id="rebirth-screen" class="game-screen hidden">
+            <h1>Years Later...</h1>
+            <p>Your child enters the workforce with your genetic advantages!</p>
+            <div class="image-wrapper character-child"></div>
+            <div id="inherited-stats"></div>
+            <button id="start-new-life-btn">Start Working</button>
+        </div>
+    </div>
+
+    <!-- Load all JavaScript files -->
+    <script src="config.js"></script>
+    <script src="stapling-game.js"></script>
+    <script src="pen-game.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

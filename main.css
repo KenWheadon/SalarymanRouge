@@ -1,0 +1,510 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Game Container */
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* UI Elements */
+#energy-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+}
+
+.energy-label {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+#energy-segments {
+  display: flex;
+  gap: 2px;
+}
+
+.energy-segment {
+  width: 30px;
+  height: 20px;
+  background-color: #333;
+  border: 2px solid #555;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.energy-segment.full {
+  background-color: #00ff00;
+}
+
+.energy-segment.draining {
+  background-color: #ffaa00;
+}
+
+#money-display {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Image System */
+.image-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.image-placeholder {
+  background-color: #444;
+  border: 2px dashed #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 5px;
+}
+
+/* Specific image placeholders */
+.money-icon .image-placeholder {
+  width: 20px;
+  height: 20px;
+}
+.newspaper .image-placeholder {
+  width: 300px;
+  height: 400px;
+}
+.office-desk .image-placeholder {
+  width: 100%;
+  height: 300px;
+}
+.train-station-bg .image-placeholder {
+  width: 100%;
+  height: 200px;
+}
+.character-tired .image-placeholder,
+.character-child .image-placeholder {
+  width: 150px;
+  height: 200px;
+  margin: 20px auto;
+}
+
+/* Game Screens */
+.game-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.game-screen.hidden {
+  display: none;
+}
+
+.game-screen h1 {
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  color: #ffcc00;
+}
+
+.game-screen h2 {
+  margin-bottom: 20px;
+  color: #ffcc00;
+}
+
+/* Newspaper Screen */
+#newspaper-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.newspaper {
+  background-color: #2a2a2a;
+  border: 3px solid #444;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 400px;
+}
+
+.newspaper:hover {
+  border-color: #ffcc00;
+  transform: scale(1.05);
+}
+
+.newspaper.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.newspaper.locked:hover {
+  transform: none;
+  border-color: #444;
+}
+
+.newspaper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.newspaper-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.newspaper-cost {
+  color: #ff6666;
+  font-weight: bold;
+}
+
+.job-preview {
+  text-align: left;
+}
+
+.job-title {
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.job-details {
+  color: #cccccc;
+  font-size: 0.9em;
+}
+
+/* Work Screen */
+#work-screen {
+  padding: 0;
+}
+
+#work-header {
+  background-color: #2a2a2a;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #444;
+}
+
+#work-area {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Minigame Styles */
+.minigame-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.task-instruction {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #ffcc00;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Stapling Game */
+.stapling-area {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.papers-stack {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 150px;
+  z-index: 1;
+}
+
+.stapler-cursor {
+  position: absolute;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.1s ease;
+}
+
+.stapler-cursor:hover {
+  transform: scale(1.1);
+}
+
+.staple-progress {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Pen Game */
+.pen-area {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  border-radius: 10px;
+}
+
+.pen-box {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px; /* Wider to fit more pens */
+  height: 100px; /* Taller to fit more pens */
+  background-color: #4a4a4a;
+  border: 2px solid #666;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 3px; /* Smaller gap to fit more */
+  overflow: hidden;
+}
+
+.pen-holders {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 15px; /* Smaller gap to fit 4 holders */
+}
+
+.pen-holder {
+  width: 50px; /* Slightly smaller to fit 4 holders */
+  height: 120px; /* Taller to fit 3 pens each */
+  background-color: #4a4a4a;
+  border: 2px solid #666;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+  gap: 2px;
+}
+
+.pen {
+  width: 18px; /* Slightly smaller */
+  height: 55px; /* Slightly smaller */
+  background-color: #0088ff;
+  border: 1px solid #0066cc;
+  border-radius: 2px;
+  cursor: grab;
+  transition: transform 0.1s ease;
+  flex-shrink: 0;
+}
+
+.pen:hover {
+  transform: scale(1.1);
+}
+
+.pen.dragging {
+  cursor: grabbing;
+  z-index: 10;
+  transform: scale(1.2);
+}
+
+.pen-holder.full {
+  border-color: #00ff00;
+}
+
+/* Shop Screen */
+#shop-container {
+  display: flex;
+  gap: 50px;
+  margin: 30px 0;
+}
+
+#general-store,
+#gene-booth {
+  background-color: #2a2a2a;
+  border: 3px solid #444;
+  border-radius: 10px;
+  padding: 30px;
+  min-width: 300px;
+}
+
+.shop-item {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-item:hover {
+  border-color: #ffcc00;
+  transform: translateY(-2px);
+}
+
+.shop-item.affordable {
+  border-color: #00ff00;
+}
+
+.shop-item.purchased {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #666;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.item-cost {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.item-description {
+  color: #cccccc;
+  font-size: 0.9em;
+}
+
+/* Buttons */
+button {
+  background-color: #ffcc00;
+  color: #000000;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 20px;
+}
+
+button:hover {
+  background-color: #ffdd33;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Death and Rebirth Screens */
+#death-screen,
+#rebirth-screen {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+#inherited-stats {
+  background-color: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.stat-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  color: #cccccc;
+}
+
+.stat-bonus {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #shop-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pen-area {
+    width: 90vw;
+    max-width: 500px;
+  }
+
+  .stapling-area {
+    width: 90vw;
+    max-width: 350px;
+  }
+}
